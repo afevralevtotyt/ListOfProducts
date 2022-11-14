@@ -22,7 +22,7 @@ public class Main {
             }
     }
 
-    public static void removeProduct(Product product, List list) {
+    public static void removeProduct(Product product, List<Product> list) {
         if (list.contains(product)) {
             list.remove(product);
         } else {
