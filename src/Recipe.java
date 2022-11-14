@@ -1,47 +1,35 @@
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Recipe {
 
 
-    private Set<Product> productsList =new HashSet<>();
+    private HashMap<Product, Integer> productsList =new HashMap<>();
     private String name;
     private double amount;
 
-    public Recipe( String name, Product...product) {
-        for (Product x: product
-             ) {
-            productsList.add(x);
-        }
+    public Recipe( String name, Product product, int quantity) {
         this.name = name;
-        if (!productsList.isEmpty()) {
-            for (Product x: productsList
-                 ) {
-                this.amount+=x.getPrice();
-            }
-        }
+        addProductToList(product, quantity);
     }
 
-
-    public void addProductToList(Product product) {
-
-        if (!productsList.contains(product)) {
-            productsList.add(product);
-        } else {
-            throw new IllegalArgumentException("Такой продукт уже есть в рецепте");
-        }
+    public void addProductToList(Product product, int quantity) {
+        productsList.put(product, Math.max(quantity, 1));
     }
     public String getName() {
         return name;
     }
 
 
-    public Set<Product> getProductsList() {
+    public HashMap<Product, Integer> getProductsList() {
         return productsList;
     }
 
     public double getAmount() {
-        return amount;
+        for (Product key: productsList.keySet()
+             ) { amount+= productsList.get(key)*key.getPrice();
+        } return amount;
     }
 
     @Override

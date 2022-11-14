@@ -63,20 +63,28 @@ public class Main {
         markAsBought("Бананы", list);
         removeProduct("Бананы", list);
         System.out.println(list);
-        Recipe bananaShake = new Recipe("Банановый шейк", bananas, milk);
-        Recipe pancakes = new Recipe("Блинчики", milk, eggs, flour);
-        Recipe cake =  new Recipe("Кекс", milk, eggs, flour);
+        Recipe bananaShake = new Recipe("Банановый шейк", bananas, 1);
+        bananaShake.addProductToList(milk, 2);
 
-        addProduct(myCollection, bananaShake, pancakes, cake);
+       /* Recipe pancakes = new Recipe("Блинчики", milk, eggs, flour);
+        Recipe cake =  new Recipe("Кекс", milk, eggs, flour);
+*/
+        addProduct(myCollection, bananaShake);
         System.out.println(bananaShake.getAmount());
 
-        Set<Integer> setOfInts = new HashSet<>();
 
-        Random random = new Random();
-        for (int i = 0; i < 20; i++) {
-            setOfInts.add(random.nextInt(1001));
-        }
 
+
+
+
+//        Set<Integer> setOfInts = new HashSet<>();
+//
+//        Random random = new Random();
+//        for (int i = 0; i < 20; i++) {
+//            setOfInts.add(random.nextInt(1001));
+//        }
+//
+/*
         System.out.println(setOfInts);
          Iterator<Integer> iterator = setOfInts.iterator();
          while (iterator.hasNext()){
@@ -85,7 +93,9 @@ public class Main {
              }
          }
 
-        System.out.println(setOfInts);
+        System.out.println(setOfInts);*/
+
+
          // Или так
 //        for (Object x: setOfInts.toArray())
 //              { if ((int)x%2==1) {
